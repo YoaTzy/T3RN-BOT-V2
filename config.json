@@ -88,15 +88,22 @@
       "bridges": {
         "OP - Arbitrum": 10,
         "OP - BASE": 10,
+        "OP - Blast": 10,
         "BASE - Arbitrum": 10,
         "BASE - OP": 10,
+        "BASE - Blast": 10,
         "Arbitrum - BASE": 10,
-        "Arbitrum - OP": 10
+        "Arbitrum - OP": 10,
+        "Arbitrum - Blast": 10,
+        "Blast - Arbitrum": 10,
+        "Blast - BASE": 10,
+        "Blast - OP": 10
       },
       "transactions": {
         "Arbitrum Sepolia": 1,
         "OP Sepolia": 1,
-        "Base Sepolia": 1
+        "Base Sepolia": 1,
+        "Blast Sepolia": 1
       }
     }
   }
