@@ -1,6 +1,9 @@
 # T3RN Bridge Bot
 ![image](https://github.com/user-attachments/assets/31d8b73f-56c1-4161-b3e8-01f4b9bae6d8)
 ![image](https://github.com/user-attachments/assets/c26d0c64-bd8d-477e-9389-32036e5a8c7f) 
+![image](https://github.com/user-attachments/assets/2fa7d90e-8b84-44ec-a7b4-38f320b05e4e)
+
+
 
 A powerful, user-friendly bot for automating transactions across T3RN bridge networks including Arbitrum Sepolia, Optimism Sepolia, and Base Sepolia. Features a rich terminal interface, custom delay settings, and IP-based access control.
 
@@ -39,7 +42,7 @@ python3 -m venv venv
 source venv/bin/activate
 
 # Install dependencies
-pip install web3 rich pytz requests
+pip install web3 rich pytz requests pyTelegramBotAPI
 
 # Run the bot
 python3 main.py
@@ -59,101 +62,14 @@ python -m venv venv
 venv\Scripts\activate
 
 # Install dependencies
-pip install web3 rich pytz requests
+pip install web3 rich pytz requests pyTelegramBotAPI
 
 # Run the bot
 python main.py
 ```
 
 ## Configuration
-
-1. Create a `config.json` file in the root directory with the following structure:
-
-```json
-{
-  "networks": {
-    "Arbitrum Sepolia": {
-      "rpc_url": "https://sepolia-rollup.arbitrum.io/rpc",
-      "chain_id": 421614,
-      "contract_address": "0x22B65d0B9b59af4D3Ed59F18b9Ad53f5F4908B54"
-    },
-    "Base Sepolia": {
-      "rpc_url": "https://sepolia.base.org",
-      "chain_id": 84532,
-      "contract_address": "0xCEE0372632a37Ba4d0499D1E2116eCff3A17d3C3"
-    },
-    "OP Sepolia": {
-      "rpc_url": "https://sepolia.optimism.io",
-      "chain_id": 11155420,
-      "contract_address": "0xb6Def636914Ae60173d9007E732684a9eEDEF26E"
-    }
-  },
-  "alternative_rpcs": {
-    "Base Sepolia": [
-      "https://sepolia.base.org",
-      "https://base-sepolia-rpc.publicnode.com",
-      "https://1rpc.io/base-sepolia",
-      "https://base-sepolia.blockpi.network/v1/rpc/public"
-    ],
-    "OP Sepolia": [
-      "https://sepolia.optimism.io",
-      "https://optimism-sepolia.blockpi.network/v1/rpc/public",
-      "https://optimism-sepolia-rpc.publicnode.com"
-    ],
-    "Arbitrum Sepolia": [
-      "https://sepolia-rollup.arbitrum.io/rpc",
-      "https://arbitrum-sepolia.blockpi.network/v1/rpc/public",
-      "https://arbitrum-sepolia-rpc.publicnode.com"
-    ]
-  },
-  "data_bridge": {
-    "OP - Arbitrum": "0x56591d59617262...",
-    "OP - BASE": "0x56591d5961726274...",
-    "BASE - Arbitrum": "0x56591d5961726274...",
-    "BASE - OP": "0x56591d5961726274...",
-    "Arbitrum - BASE": "0x56591d5961726274...",
-    "Arbitrum - OP": "0x56591d596f7073..."
-  },
-  "accounts": [
-    {
-      "private_key": "YOUR_PRIVATE_KEY",
-      "address": "YOUR_ADDRESS",
-      "label": "Account Label"
-    }
-  ],
-  "settings": {
-    "bridge_amount": 0.1,
-    "explorer_urls": {
-      "Arbitrum Sepolia": "https://sepolia.arbiscan.io/tx/",
-      "OP Sepolia": "https://sepolia-optimism.etherscan.io/tx/",
-      "Base Sepolia": "https://sepolia.basescan.org/tx/",
-      "BRN": "https://b2n.explorer.caldera.xyz/txs"
-    },
-    "delays": {
-      "between_accounts": 1,
-      "between_bridges": 10,
-      "between_cycles": 30
-    },
-    "custom_delays": {
-      "bridges": {
-        "OP - Arbitrum": 15,
-        "OP - BASE": 12,
-        "BASE - Arbitrum": 18,
-        "BASE - OP": 8,
-        "Arbitrum - BASE": 14,
-        "Arbitrum - OP": 10
-      },
-      "transactions": {
-        "Arbitrum Sepolia": 8,
-        "OP Sepolia": 5,
-        "Base Sepolia": 6
-      }
-    }
-  }
-}
-```
-
-2. Replace `YOUR_PRIVATE_KEY` and `YOUR_ADDRESS` with your actual wallet details.
+Replace `YOUR_PRIVATE_KEY` and `YOUR_ADDRESS` with your actual wallet details.
 
 ## Obtaining Bridge Data
 
@@ -208,7 +124,7 @@ The bot includes an IP-based access control system, which uses a whitelist store
 - **Format**: Each line should contain an IP address and expiry date in DD-MM-YYYY format
 - **Example**: `159.89.177.95 25-03-2099`
 
-New users whose IPs are not in the whitelist automatically receive a 1-hour trial before they need to request full access.
+New users whose IPs are not in the whitelist automatically receive a 10 minute trial before they need to request full access.
 
 ## Usage
 
@@ -231,12 +147,12 @@ New users whose IPs are not in the whitelist automatically receive a 1-hour tria
 ## Credits
 
 - **Developer**: Yoake ([Telegram: @yoakeid](https://t.me/yoakeid))
-- **Framework**: T3RN Bridge Framework
 - **Libraries**: 
   - [Web3.py](https://github.com/ethereum/web3.py)
   - [Rich](https://github.com/Textualize/rich)
   - [PyTZ](https://github.com/stub42/pytz)
   - [Requests](https://github.com/psf/requests)
+  - pyTelegramBotAPI
 
 ## License
 
